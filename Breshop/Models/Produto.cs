@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +8,10 @@ namespace Breshop.Models
 {
     public class Produto
     {
-        public int Id { get; set; }
+        [Key]
+        public int IdProduto { get; set; }
+
+        public string Descricao { get; set; }
 
         public string Tamanho { get; set; }
 
@@ -16,5 +20,7 @@ namespace Breshop.Models
         public string Marca { get; set; }
 
         public string Sexo { get; set; }
+
+        public string Categoria { get; set; }
     }
 }

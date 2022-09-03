@@ -20,114 +20,115 @@ namespace Breshop.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Produto.ToListAsync());
+            //await _context.Produto.ToListAsync()
+            return View();
         }
 
         public async Task<IActionResult> Calcado(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var produto = await _context.Produto
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
+            //var produto = await _context.Produto
+            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
+            //if (produto == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(produto);
+            return View();
         }
 
         public async Task<IActionResult> Feminino(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var produto = await _context.Produto
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
+            //var produto = await _context.Produto
+            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
+            //if (produto == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(produto);
+            return View();
         }
 
         public async Task<IActionResult> Infantil(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var produto = await _context.Produto
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
+            //var produto = await _context.Produto
+            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
+            //if (produto == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(produto);
+            return View();
         }
 
         public async Task<IActionResult> Ofertas(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var produto = await _context.Produto
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
+            //var produto = await _context.Produto
+            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
+            //if (produto == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(produto);
+            return View();
         }
 
         public async Task<IActionResult> Masculino(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var produto = await _context.Produto
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
+            //var produto = await _context.Produto
+            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
+            //if (produto == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(produto);
+            return View();
         }
 
         public async Task<IActionResult> Relogio(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            //if (id == null)
+            //{
+            //    return NotFound();
+            //}
 
-            var produto = await _context.Produto
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
+            //var produto = await _context.Produto
+            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
+            //if (produto == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return View(produto);
+            return View();
         }
 
-        public async Task<IActionResult> Error(int? id)
+        public IActionResult Error(int? id)
         {
-             return NotFound();
+            return NotFound();
         }
     }
 }

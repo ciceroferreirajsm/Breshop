@@ -12629,11 +12629,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Heavy Soldier Files\\Desktop\\TCC\\BreshopTCC\\Breshop\\Breshop\\Breshop.csproj",
+      "projectUniqueName": "E:\\Heavy Soldier Files\\Desktop\\TCC\\Breshop\\Breshop\\Breshop.csproj",
       "projectName": "Breshop",
-      "projectPath": "E:\\Heavy Soldier Files\\Desktop\\TCC\\BreshopTCC\\Breshop\\Breshop\\Breshop.csproj",
+      "projectPath": "E:\\Heavy Soldier Files\\Desktop\\TCC\\Breshop\\Breshop\\Breshop.csproj",
       "packagesPath": "C:\\Users\\Usuário\\.nuget\\packages\\",
-      "outputPath": "E:\\Heavy Soldier Files\\Desktop\\TCC\\BreshopTCC\\Breshop\\Breshop\\obj\\",
+      "outputPath": "E:\\Heavy Soldier Files\\Desktop\\TCC\\Breshop\\Breshop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
