@@ -1,9 +1,25 @@
-/*begin-commonstyles library*//*!
- * froala_editor v4.0.6 (https://www.froala.com/wysiwyg-editor)
- * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2021 Froala Labs
- */
+.grid-produto {
+    display: flex;
+    margin-left: 7%;
+    margin-right: 7%;
+}
 
+.img-produto {
+}
+
+.title-produto {
+    margin-left: 45%;
+}
+
+.descricao {
+}
+
+/*********************** BOOTSTRAP ***********************************/
+
+.header-menu{
+    display: flex;
+    align-items: center;
+}
 .fr-clearfix::after {
   clear: both;
   display: block;

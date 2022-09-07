@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Breshop.Migrations
 {
     [DbContext(typeof(BreshopContext))]
-    [Migration("20220903184915_Initial")]
+    [Migration("20220907203205_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,9 +38,32 @@ namespace Breshop.Migrations
 
                     b.Property<string>("Tamanho");
 
+                    b.Property<string>("UrlImagem");
+
                     b.HasKey("IdProduto");
 
                     b.ToTable("Produto");
+                });
+
+            modelBuilder.Entity("Breshop.Models.Usuario", b =>
+                {
+                    b.Property<int>("IdUsuario")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CEP");
+
+                    b.Property<double>("Celular");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Endereco");
+
+                    b.Property<string>("Nome");
+
+                    b.HasKey("IdUsuario");
+
+                    b.ToTable("Usuario");
                 });
 #pragma warning restore 612, 618
         }
