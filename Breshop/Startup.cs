@@ -33,12 +33,12 @@ namespace Breshop
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddDbContext<BreshopContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("BreshopContext")));
-
             // Injeção de dependencia
             services.AddTransient<IProdutoService, ProdutoService>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
+
+            services.AddDbContext<BreshopContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("BreshopContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

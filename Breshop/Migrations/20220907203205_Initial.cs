@@ -46,11 +46,11 @@ namespace Breshop.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Produto");
+            //migrationBuilder.DropTable(
+            //    name: "Produto");
 
-            migrationBuilder.DropTable(
-                name: "Usuario");
+            //migrationBuilder.DropTable(
+            //    name: "Usuario");
         }
     }
 }
