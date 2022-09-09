@@ -89,7 +89,7 @@ namespace Breshop.Repository
 
             try
             {
-                produtos = _context.Produto.OrderBy(x => x.Categoria == Categoria).ToList();
+                produtos = _context.Produto.Where(x => x.Categoria == Categoria).ToList();
 
                 return produtos;
             }

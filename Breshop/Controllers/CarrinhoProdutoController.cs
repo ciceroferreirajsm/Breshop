@@ -8,16 +8,15 @@ using Breshop.Models;
 
 namespace Breshop.Controllers
 {
-    public class CarrinhoController : Controller
+    public class CarrinhoProdutoController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Chekcout()
+        public IActionResult Checkout()
         {
-
             return View();
         }
     }

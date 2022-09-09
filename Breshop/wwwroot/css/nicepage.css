@@ -14,6 +14,19 @@
 .descricao {
 }
 
+
+.lista-icones {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.carrinho {
+    width: 2rem;
+}
+
+.novo-produto {
+    width: 7%;
+}
 /*********************** BOOTSTRAP ***********************************/
 
 .header-menu{

@@ -25,10 +25,20 @@
 </head>
 <body class="u-body u-xl-mode" data-lang="pt">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <h2>Create</h2>
-        <h4>Produto</h4>
+        <h2>Cadastrar Produto</h2>
         <form asp-action="Criar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="u-container-style u-list-item u-repeater-item">
+                <label asp-for="Categoria" class="control-label"></label>
+                <span asp-validation-for="Categoria" class="text-danger"></span>
+                <select asp-for="Categoria">
+                    <option value="Calcado">Calçados</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Ofertas">Ofertas</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Infantil">Infantil</option>
+                    <option value="Relogios">Relógios</option>
+                </select>
+            </div>
             <div class="u-container-style u-list-item u-repeater-item">
                 <label asp-for="Tamanho" class="control-label"></label>
                 <input asp-for="Tamanho" class="form-control" />
@@ -55,7 +65,7 @@
         </form>
     </div>
     <div>
-        <a asp-action="Index">Back to List</a>
+        <a asp-controller="Produto" asp-action="Index">Voltar</a>
     </div>
 </body>
 
