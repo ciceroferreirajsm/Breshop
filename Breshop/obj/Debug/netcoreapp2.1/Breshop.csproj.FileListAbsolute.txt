@@ -31,3 +31,4 @@ E:\Heavy Soldier Files\Desktop\TCC\Breshop\Breshop\obj\Debug\netcoreapp2.1\Bresh
 E:\Heavy Soldier Files\Desktop\TCC\Breshop\Breshop\obj\Debug\netcoreapp2.1\Breshop.dll
 E:\Heavy Soldier Files\Desktop\TCC\Breshop\Breshop\obj\Debug\netcoreapp2.1\Breshop.pdb
 E:\Heavy Soldier Files\Desktop\TCC\Breshop\Breshop\obj\Debug\netcoreapp2.1\Breshop.csproj.CopyComplete
+E:\Heavy Soldier Files\Desktop\TCC\Breshop\Breshop\obj\Debug\netcoreapp2.1\Breshop.csprojAssemblyReference.cache

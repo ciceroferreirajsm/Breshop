@@ -36,7 +36,7 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("calcado");
+                List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Calcado");
 
                 return View(produtos);
             }
@@ -52,7 +52,7 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Feminino");
 
                 return View(produtos);
             }
@@ -68,7 +68,7 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Infantil");
 
                 return View(produtos);
             }
@@ -84,7 +84,7 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Ofertas");
 
                 return View(produtos);
             }
@@ -100,7 +100,7 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Masculino");
 
                 return View(produtos);
             }
@@ -116,7 +116,7 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Relogio");
 
                 return View(produtos);
             }

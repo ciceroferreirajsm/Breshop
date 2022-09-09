@@ -18,7 +18,7 @@ namespace Breshop.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Criar(int? id)
+        public async Task<IActionResult> Criar(Produto produto)
         {
             //if (id == null)
             //{
