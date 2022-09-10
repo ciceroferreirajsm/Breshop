@@ -18,10 +18,10 @@ namespace Breshop.Repository
 
         public bool AdicionarProduto(Produto novoProduto)
         {
-            Produto produtoExistente = _context.Produto.FirstOrDefault(x => x.IdProduto == novoProduto.IdProduto);
+            Produto produtoExistente = _context.Produto.FirstOrDefault(x => x.IdProduto == novoProduto.IdProduto && x.Descricao == novoProduto.Descricao);
             try
             {
-                if (produtoExistente != null)
+                if (produtoExistente == null)
                 {
                     produtoExistente = novoProduto;
                     _context.Produto.Add(novoProduto);

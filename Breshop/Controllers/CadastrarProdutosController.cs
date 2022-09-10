@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Breshop.Models;
+using Breshop.Intefaces;
 
 namespace Breshop.Controllers
 {
     public class CadastrarProdutosController : Controller
     {
+        private readonly IProdutoService _produtoService;
+
+        public CadastrarProdutosController(IProdutoService produtoService)
+        {
+            _produtoService = produtoService;
+        }
 
         public async Task<IActionResult> Index()
         {
@@ -20,19 +22,23 @@ namespace Breshop.Controllers
 
         public async Task<IActionResult> Criar(Produto produto)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+            if (string.IsNullOrWhiteSpace(produto.Marca))
+            {
+                return View(produto);
+            }
 
-            //var produto = await _context.Produto
-            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
-            //if (produto == null)
-            //{
-            //    return NotFound();
-            //}
+            bool produtoAdicionado = _produtoService.AdicionarProduto(produto);
 
-            return View();
+            if (produtoAdicionado)
+            {
+                return View(produto);
+            }
+            else
+            {
+                produto = new Produto();
+            }
+
+            return View(produto);
         }
 
         public async Task<IActionResult> Deletar(int? id)
