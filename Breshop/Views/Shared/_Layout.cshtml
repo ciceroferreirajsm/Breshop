@@ -1,6 +1,11 @@
 ﻿
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="pt">
+<head>
+    <link rel="stylesheet" href="~/css/Modal.css" />
+    <script class="u-script" type="text/javascript" src="~/js/jquery.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/Modal.js"></script>
+</head>
 <body>
     <header class="u-clearfix u-header u-header" id="sec-816c" style="margin-left: 7%;">
         <div class="u-clearfix u-sheet u-sheet-1 header-menu">
@@ -127,5 +132,32 @@ c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path>
             </section>
         </div>
     </div>
+    <!-- Modal -->
+    <!--Modal: modalPush-->
+    <div class="modal fade" id="modalPush" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-info" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center">
+                    <p class="heading">Breshop</p>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+                    <p class="Conteudo-modal"></p>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal" onclick="FecharModal()">Ok</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: modalPush-->
 </body>
 </html>

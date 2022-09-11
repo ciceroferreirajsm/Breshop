@@ -18,7 +18,7 @@ namespace Breshop.Repository
 
         public bool AdicionarProduto(Produto novoProduto)
         {
-            Produto produtoExistente = _context.Produto.FirstOrDefault(x => x.IdProduto == novoProduto.IdProduto && x.Descricao == novoProduto.Descricao);
+            Produto produtoExistente = _context.Produto.FirstOrDefault(x => x.IdProduto == novoProduto.IdProduto || x.Descricao == novoProduto.Descricao);
             try
             {
                 if (produtoExistente == null)

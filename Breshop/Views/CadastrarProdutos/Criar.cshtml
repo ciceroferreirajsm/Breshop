@@ -12,11 +12,12 @@
     <script class="u-script" type="text/javascript" src="~/js/CadastrarProduto/Criar.js"></script>
 </head>
 <body class="u-body u-xl-mode" data-lang="pt">
-    <input value="@Model.IdProduto" type="hidden" id="idProduto"/>
+    <input value="@Model.IdProduto" type="hidden" id="idProduto" />
+    <input value="@ViewBag.Message" type="hidden" id="mensagem" />
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="grid-criar-produto">
             <h2>Cadastrar Produto</h2>
-            <form asp-action="Criar">
+            <form asp-action="Criar" method="post" enctype="multipart/form-data">
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Categoria" class="control-label">Categoria: </label>
                     <span asp-validation-for="Categoria" class="text-danger"></span>
@@ -31,7 +32,7 @@
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Descricao" class="control-label">Descrição: </label>
-                    <input asp-for="Descricao" class="form-control" />
+                    <input asp-for="Descricao" required class="form-control" />
                     <span asp-validation-for="Descricao" class="text-danger"></span>
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
@@ -41,18 +42,25 @@
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Preco" class="control-label">Preço: </label>
-                    <input asp-for="Preco" type="number" min="1" class="form-control" />
+                    <input asp-for="Preco" type="number" required min="1" class="form-control" />
                     <span asp-validation-for="Preco" class="text-danger"></span>
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Marca" class="control-label">Marca: </label>
-                    <input asp-for="Marca" class="form-control" />
+                    <input asp-for="Marca" required class="form-control" />
                     <span asp-validation-for="Marca" class="text-danger"></span>
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Sexo" class="control-label">Sexo: </label>
-                    <input asp-for="Sexo" class="form-control" />
+                    <input asp-for="Sexo" required class="form-control" />
                     <span asp-validation-for="Sexo" class="text-danger"></span>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <input asp-for="Imagem" type="file" class="form-control" />
+                    <span asp-validation-for="Imagem" class="text-danger"></span>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <input asp-for="UrlImagem" type="hidden" required class="form-control" />
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <input type="submit" value="Criar" class="btn btn-default" />

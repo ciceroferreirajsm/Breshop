@@ -9,6 +9,12 @@ namespace Breshop.Models
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Produto>().Ignore(t => t.Imagem);
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<Breshop.Models.Produto> Produto { get; set; }
 
         public DbSet<Breshop.Models.Usuario> Usuario { get; set; }

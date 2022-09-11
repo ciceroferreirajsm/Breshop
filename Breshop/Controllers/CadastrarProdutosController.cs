@@ -2,16 +2,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Breshop.Models;
 using Breshop.Intefaces;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System;
 
 namespace Breshop.Controllers
 {
     public class CadastrarProdutosController : Controller
     {
         private readonly IProdutoService _produtoService;
+        private IHostingEnvironment Environment;
 
-        public CadastrarProdutosController(IProdutoService produtoService)
+        public CadastrarProdutosController(IProdutoService produtoService, IHostingEnvironment _environment)
         {
             _produtoService = produtoService;
+            Environment = _environment;
         }
 
         public async Task<IActionResult> Index()
@@ -27,6 +34,8 @@ namespace Breshop.Controllers
                 return View(produto);
             }
 
+            produto.UrlImagem = SalvarImagem(produto.Imagem, produto.Categoria);
+
             bool produtoAdicionado = _produtoService.AdicionarProduto(produto);
 
             if (produtoAdicionado)
@@ -36,6 +45,7 @@ namespace Breshop.Controllers
             else
             {
                 produto = new Produto();
+                ViewBag.Message = "Houve um erro ao adicionar o produto.";
             }
 
             return View(produto);
@@ -73,6 +83,34 @@ namespace Breshop.Controllers
             //}
 
             return View();
+        }
+
+        public string SalvarImagem(IFormFile arquivo, string categoria)
+        {
+            try
+            {
+                string wwwPath = this.Environment.WebRootPath;
+                string contentPath = this.Environment.ContentRootPath;
+
+                string path = Path.Combine(this.Environment.WebRootPath, @"\images\");
+                path = Path.Combine(path, categoria);
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                string fileName = Path.GetFileName(arquivo.FileName);
+                using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                {
+                    arquivo.CopyTo(stream);
+                }
+
+                return path + fileName;
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
         }
     }
 }
