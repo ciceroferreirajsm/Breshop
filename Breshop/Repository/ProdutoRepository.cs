@@ -98,5 +98,20 @@ namespace Breshop.Repository
                 return produtos;
             }
         }
+        public List<Produto> ListarProdutos()
+        {
+            List<Produto> produtos = new List<Produto>();
+
+            try
+            {
+                produtos = _context.Produto.OrderBy(x => x.Categoria).ToList();
+
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                return produtos;
+            }
+        }
     }
 }

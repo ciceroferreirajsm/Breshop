@@ -21,8 +21,6 @@ namespace Breshop.Models
 
         public string Marca { get; set; }
 
-        public string Sexo { get; set; }
-
         public string Categoria { get; set; }
 
         public string UrlImagem { get; set; }

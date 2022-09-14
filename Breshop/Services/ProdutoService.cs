@@ -72,5 +72,19 @@ namespace Breshop.Services
                 throw ex;
             }
         }
+
+        public List<Produto> ListarProdutos()
+        {
+            try
+            {
+                List<Produto> produtos = _produtoRepository.ListarProdutos();
+
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

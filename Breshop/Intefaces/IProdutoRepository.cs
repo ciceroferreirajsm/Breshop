@@ -15,5 +15,7 @@ namespace Breshop.Intefaces
         bool DeletarProduto(int Idproduto);
 
         List<Produto> ObterListaProdutosPorCategoria(string Categoria);
+
+        List<Produto> ListarProdutos();
     }
 }

@@ -42,18 +42,13 @@
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Preco" class="control-label">Preço: </label>
-                    <input asp-for="Preco" type="number" required min="1" class="form-control" />
+                    <input asp-for="Preco" required min="1" class="form-control" />
                     <span asp-validation-for="Preco" class="text-danger"></span>
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Marca" class="control-label">Marca: </label>
                     <input asp-for="Marca" required class="form-control" />
                     <span asp-validation-for="Marca" class="text-danger"></span>
-                </div>
-                <div class="u-container-style u-list-item u-repeater-item">
-                    <label asp-for="Sexo" class="control-label">Sexo: </label>
-                    <input asp-for="Sexo" required class="form-control" />
-                    <span asp-validation-for="Sexo" class="text-danger"></span>
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <input asp-for="Imagem" type="file" class="form-control" />
@@ -64,7 +59,7 @@
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <input type="submit" value="Criar" class="btn btn-default" />
-                    <a asp-controller="Produto" asp-action="Index"><input type="button" value="Voltar" /></a>
+                    <a asp-action="Index"><input type="button" value="Voltar" /></a>
                 </div>
             </form>
         </div>

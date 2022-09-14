@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System;
+using Newtonsoft.Json;
 
 namespace Breshop.Controllers
 {
@@ -21,10 +22,30 @@ namespace Breshop.Controllers
             Environment = _environment;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string Categoria)
         {
-            //await _context.Produto.ToListAsync()
-            return View();
+            try
+            {
+                List<Produto> produtos = new List<Produto>();
+
+                if (string.IsNullOrWhiteSpace(Categoria))
+                {
+                    produtos = _produtoService.ListarProdutos();
+                    return View(produtos);
+                }
+
+                produtos = _produtoService.ObterListaProdutosPorCategoria(Categoria);
+
+                ViewBag.CategoriaSelecionada = Categoria;
+                ViewBag.Message = produtos == null || produtos.Count == 0 ? "Nenhum produto encontrado!" : null;
+
+                return View(produtos);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+                return View();
+            }
         }
 
         public async Task<IActionResult> Criar(Produto produto)
@@ -51,21 +72,21 @@ namespace Breshop.Controllers
             return View(produto);
         }
 
-        public async Task<IActionResult> Deletar(int? id)
+        public async Task<IActionResult> Deletar(int id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+            if (id == 0)
+            {
+                ViewBag.Message = "Nenhum produto encontrado!";
+            }
 
-            //var produto = await _context.Produto
-            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
-            //if (produto == null)
-            //{
-            //    return NotFound();
-            //}
+            bool produtoExcluido = _produtoService.DeletarProduto(id);
 
-            return View();
+            if (!produtoExcluido)
+            {
+                throw new Exception("Erro ao excluir produto");
+            }
+
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Editar(int? id)
@@ -112,5 +133,6 @@ namespace Breshop.Controllers
                 return "";
             }
         }
+
     }
 }
