@@ -74,8 +74,8 @@
                                 @Html.DisplayFor(modelItem => item.Tamanho)
                             </td>
                             <td>
-                                <a asp-action="Editar" asp-route-id="@item.IdProduto">Edit</a> |
-                                <a asp-action="Deletar" asp-route-id="@item.IdProduto">Delete</a>
+                                <a asp-action="Editar" asp-route-id="@item.IdProduto" asp-route-Categoria="@ViewBag.CategoriaSelecionada">Edit</a> |
+                                <a asp-action="Deletar" asp-route-id="@item.IdProduto" asp-route-Categoria="@ViewBag.CategoriaSelecionada">Delete</a>
                             </td>
                         </tr>
                     }

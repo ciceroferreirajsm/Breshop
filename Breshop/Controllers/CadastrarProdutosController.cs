@@ -72,7 +72,7 @@ namespace Breshop.Controllers
             return View(produto);
         }
 
-        public async Task<IActionResult> Deletar(int id)
+        public async Task<IActionResult> Deletar(int id, string Categoria)
         {
             if (id == 0)
             {
@@ -86,24 +86,27 @@ namespace Breshop.Controllers
                 throw new Exception("Erro ao excluir produto");
             }
 
-            return RedirectToAction("Index");
+            ViewBag.Message = "";
+
+            return RedirectToAction("Index", new { Categoria });
         }
 
-        public async Task<IActionResult> Editar(int? id)
+        public async Task<IActionResult> Editar(int id, string Categoria, Produto produto)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+            Produto produtoExistente = _produtoService.ObterProdutoPorId(id);
 
-            //var produto = await _context.Produto
-            //    .FirstOrDefaultAsync(m => m.IdProduto == id);
-            //if (produto == null)
-            //{
-            //    return NotFound();
-            //}
+            if (produtoExistente == null)
+            {
+                ViewBag.Message = "Nenhum produto encontrado!";
+                return RedirectToAction("Index", new { Categoria });
+            }
+            if(produto.IdProduto != 0)
+            {
+                ViewBag.Message = "Produto Atualizado com sucesso!";
+                return View(_produtoService.AtualizarProduto(produto));
+            }          
 
-            return View();
+            return View(produtoExistente);
         }
 
         public string SalvarImagem(IFormFile arquivo, string categoria)

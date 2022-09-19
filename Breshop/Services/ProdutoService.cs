@@ -31,13 +31,11 @@ namespace Breshop.Services
             }
         }
 
-        public bool AtualizarProduto(Produto produto)
+        public Produto AtualizarProduto(Produto produto)
         {
             try
             {
-                bool produtoAdicionado = _produtoRepository.AtualizarProduto(produto);
-
-                return produtoAdicionado;
+                return _produtoRepository.AtualizarProduto(produto); 
             }
             catch (Exception ex)
             {
@@ -78,6 +76,20 @@ namespace Breshop.Services
             try
             {
                 List<Produto> produtos = _produtoRepository.ListarProdutos();
+
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Produto ObterProdutoPorId(int id)
+        {
+            try
+            {
+                Produto produtos = _produtoRepository.ObterProdutoPorId(id);
 
                 return produtos;
             }

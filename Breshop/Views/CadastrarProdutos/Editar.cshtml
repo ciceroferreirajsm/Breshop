@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="~/css/CriarProduto.css" />
     <script class="u-script" type="text/javascript" src="~/js/jquery.js"></script>
     <script class="u-script" type="text/javascript" src="~/js/nicepage.js"></script>
-    <script class="u-script" type="text/javascript" src="~/js/CadastrarProduto/Criar.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/CadastrarProduto/Editar.js"></script>
 </head>
 <body class="u-body u-xl-mode" data-lang="pt">
     <input value="@ViewBag.Message" type="hidden" id="mensagem" />
     <div class="u-clearfix u-sheet u-sheet-1">
         <div class="grid-criar-produto">
-            <h2>Cadastrar Produto</h2>
-            <form asp-action="Criar" method="post" enctype="multipart/form-data">
+            <h2>Atualizar Produto</h2>
+            <form asp-action="Editar" method="post" enctype="multipart/form-data">
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Categoria" class="control-label">Categoria: </label>
                     <span asp-validation-for="Categoria" class="text-danger"></span>
@@ -29,7 +29,8 @@
                         <option value="Relogios">Relógios</option>
                     </select>
                 </div>
-                <input asp-for="Descricao" type="hidden" value="@Model.IdProduto" class="form-control" id="idProduto"/>
+                <input asp-for="IdProduto" type="hidden" value="@Model.IdProduto" class="form-control" id="idProduto" />
+                <span asp-validation-for="IdProduto" typeof="hidden"></span>
                 <div class="u-container-style u-list-item u-repeater-item">
                     <label asp-for="Descricao" class="control-label">Descrição: </label>
                     <input asp-for="Descricao" required class="form-control" />
@@ -58,8 +59,8 @@
                     <input asp-for="UrlImagem" type="hidden" required class="form-control" />
                 </div>
                 <div class="u-container-style u-list-item u-repeater-item">
-                    <input type="submit" value="Criar" class="btn btn-default" />
-                    <a asp-controller="Produto" asp-action="Index"><input type="button" value="Voltar" /></a>
+                    <input type="submit" value="Atualizar" class="btn btn-default" />
+                    <a asp-controller="CadastrarProdutos" asp-action="Index"><input type="button" value="Voltar" /></a>
                 </div>
             </form>
         </div>

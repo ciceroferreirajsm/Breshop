@@ -29,7 +29,7 @@ namespace Breshop.Repository
                     return true;
                 }
 
-                return false;
+                return false; 
 
             }
             catch (Exception)
@@ -38,7 +38,7 @@ namespace Breshop.Repository
             }
         }
 
-        public bool AtualizarProduto(Produto novoProduto)
+        public Produto AtualizarProduto(Produto novoProduto)
         {
             Produto produtoExistente = _context.Produto.FirstOrDefault(x => x.IdProduto == novoProduto.IdProduto);
 
@@ -46,18 +46,25 @@ namespace Breshop.Repository
             {
                 if (produtoExistente != null)
                 {
-                    produtoExistente = novoProduto;
-                    _context.Produto.Add(novoProduto);
+                    produtoExistente.Imagem = novoProduto.Imagem;
+                    produtoExistente.Marca = novoProduto.Marca;
+                    produtoExistente.Preco = novoProduto.Preco;
+                    produtoExistente.Tamanho = novoProduto.Tamanho;
+                    produtoExistente.UrlImagem = novoProduto.UrlImagem;
+                    produtoExistente.Categoria = novoProduto.Categoria;
+                    produtoExistente.Descricao = novoProduto.Descricao;
+
+                    _context.Produto.Update(produtoExistente);
                     _context.SaveChanges();
 
-                    return true;
+                    return novoProduto;
                 }
 
-                return false;
+                return null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                return null;
             }
         }
 
@@ -111,6 +118,22 @@ namespace Breshop.Repository
             catch (Exception ex)
             {
                 return produtos;
+            }
+        }
+
+        public Produto ObterProdutoPorId(int id)
+        {
+            try
+            {
+                Produto produto = new Produto();
+
+                produto = _context.Produto.FirstOrDefault(x => x.IdProduto == id);
+
+                return produto;
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
     }

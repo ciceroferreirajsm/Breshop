@@ -10,12 +10,14 @@ namespace Breshop.Intefaces
     {
         bool AdicionarProduto(Produto produto);
 
-        bool AtualizarProduto(Produto produto);
+        Produto AtualizarProduto(Produto produto);
 
         bool DeletarProduto(int Idproduto);
 
         List<Produto> ObterListaProdutosPorCategoria(string Categoria);
 
         List<Produto> ListarProdutos();
+
+        Produto ObterProdutoPorId(int id);
     }
 }
