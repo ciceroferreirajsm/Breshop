@@ -1,4 +1,4 @@
-﻿using Breshop.Intefaces;
+﻿using Breshop.Interfaces;
 using Breshop.Models;
 using System;
 using System.Collections.Generic;
@@ -18,18 +18,17 @@ namespace Breshop.Repository
 
         public bool AdicionarProduto(Produto novoProduto)
         {
-            Produto produtoExistente = _context.Produto.FirstOrDefault(x => x.IdProduto == novoProduto.IdProduto);
+            Produto produtoExistente = _context.Produto.FirstOrDefault(x => x.IdProduto == novoProduto.IdProduto || x.Descricao == novoProduto.Descricao);
             try
             {
-                if (produtoExistente != null)
+                if (produtoExistente == null)
                 {
-                    produtoExistente = novoProduto;
                     _context.Produto.Add(novoProduto);
                     _context.SaveChanges();
                     return true;
                 }
 
-                return false;
+                return false; 
 
             }
             catch (Exception)
@@ -38,7 +37,7 @@ namespace Breshop.Repository
             }
         }
 
-        public bool AtualizarProduto(Produto novoProduto)
+        public Produto AtualizarProduto(Produto novoProduto)
         {
             Produto produtoExistente = _context.Produto.FirstOrDefault(x => x.IdProduto == novoProduto.IdProduto);
 
@@ -46,18 +45,26 @@ namespace Breshop.Repository
             {
                 if (produtoExistente != null)
                 {
-                    produtoExistente = novoProduto;
-                    _context.Produto.Add(novoProduto);
+                    produtoExistente.Imagem = novoProduto.Imagem;
+                    produtoExistente.Marca = novoProduto.Marca;
+                    produtoExistente.Preco = novoProduto.Preco;
+                    produtoExistente.Tamanho = novoProduto.Tamanho;
+                    produtoExistente.UrlImagem = novoProduto.UrlImagem;
+                    produtoExistente.Categoria = novoProduto.Categoria;
+                    produtoExistente.Descricao = novoProduto.Descricao;
+                    produtoExistente.ProdutoVendido = novoProduto.ProdutoVendido;
+
+                    _context.Produto.Update(produtoExistente);
                     _context.SaveChanges();
 
-                    return true;
+                    return novoProduto;
                 }
 
-                return false;
+                return null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                return null;
             }
         }
 
@@ -89,13 +96,45 @@ namespace Breshop.Repository
 
             try
             {
-                produtos = _context.Produto.OrderBy(x => x.Categoria == Categoria).ToList();
+                produtos = _context.Produto.Where(x => x.Categoria == Categoria && !x.ProdutoVendido).ToList();
 
                 return produtos;
             }
             catch (Exception ex)
             {
                 return produtos;
+            }
+        }
+
+        public List<Produto> ListarProdutos()
+        {
+            List<Produto> produtos = new List<Produto>();
+
+            try
+            {
+                produtos = _context.Produto.Where(x => !x.ProdutoVendido).OrderBy(x => x.UrlImagem).ToList();
+
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                return produtos;
+            }
+        }
+
+        public Produto ObterProdutoPorId(int id)
+        {
+            try
+            {
+                Produto produto = new Produto();
+
+                produto = _context.Produto.FirstOrDefault(x => x.IdProduto == id);
+
+                return produto;
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
     }

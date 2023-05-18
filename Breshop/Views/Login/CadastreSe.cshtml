@@ -1,0 +1,30 @@
+﻿@model Breshop.Models.Usuario
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="pt">
+<head>
+    <link rel="stylesheet" href="~/css/Cadastro.css">
+    <script class="u-script" type="text/javascript" src="~/js/Login/Cadastro.js" defer=""></script>
+</head>
+<body class="u-body u-xl-mode" data-lang="pt">
+    <section>
+        <div class="wrapper">
+            <form class="cadastro">
+                <p class="title">Bem vindo!</p>
+                <input type="text" asp-for="Nome" id="nome" required placeholder="Nome" autofocus />
+                <i class="fa fa-user"></i>
+                <input type="text" asp-for="Email" id="email" required placeholder="Email" autofocus />
+                <i class="fa fa-user"></i>
+                <input type="password" asp-for="Senha" id="senha" required placeholder="Senha" autofocus />
+                <i class="fa fa-key"></i>
+                <input type="password" id="senhaRepetida" required placeholder="Digite novamente sua senha" autofocus />
+                <i class="fa fa-key"></i>
+                <button type="submit">
+                    <i class="spinner"></i>
+                    <span class="state">Cadastrar</span>
+                </button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

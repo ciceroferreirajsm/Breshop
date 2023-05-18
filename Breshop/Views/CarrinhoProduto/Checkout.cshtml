@@ -1,0 +1,90 @@
+﻿@model List<Breshop.Models.Produto>
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="pt">
+<head>
+    <link rel="stylesheet" href="~/css/Carrinho.css" />
+    <script class="u-script" type="text/javascript" src="~/js/jquery.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/Carrinho/Carrinho.js"></script>
+</head>
+<body class="u-body u-xl-mode" data-lang="pt">
+    <div class='subject'>DailyUI #002 <strong>Credit Card Checkout</strong></div>
+    <div class='checkout'>
+        <div class='order'>
+            <input type="hidden" id="produtos" value="@ViewData["PRODUTOS"]" />
+            <input type="hidden" id="idUsuario" value="@ViewData["IDUSUARIO"]" />
+            <input type="hidden" id="idCarrinho" value="@ViewData["CARRINHO"]" />
+            <input type="hidden" id="idPedido" value="@ViewData["IDPEDIDO"]" />
+            @if (Model != null && Model.Any())
+            {
+                <input type="hidden" id="pedido" value="@Model.FirstOrDefault().Pedido" />
+            }
+            <a asp-controller="Produto" asp-action="Ofertas"><input type="button" class='button-return' value="Voltar" title="Continuar comprando" /></a>
+            <h2>Checkout</h2>
+            <h5>Order #101</h5>
+            <div class="produtos-checkout">
+                <table>
+                    @if (Model != null && Model.Any())
+                    {
+                        <tr style="align-content: space-between;">
+                            <td style="width: 25%;">produto</td>
+                            <td>Descrição</td>
+                            <td>Valor</td>
+                            <td>Quantidade</td>
+                        </tr>
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><img style="width: 20%;" src="@item.UrlImagem" /></td>
+                                <td>@item.Descricao</td>
+                                <td>@item.Preco.ToString("C")</td>
+                                <td>@item.Quantidade</td>
+                                <td onclick="RemoverCarrinho(@item.IdProduto)">remover</td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+            <h5 class='total'>Total</h5><h1 id="total">@Model.Sum(x => x.Preco * x.Quantidade).ToString("C")</h1>
+        </div>
+        <h2>Dados da entrega:</h2>
+        <div id='payment' class='payment'>
+            <div class='card-form'>
+                <label title='Cep'>Cep:</label>
+                <p class='field'>
+                    <input onblur="ObterEnderecoPorCep()" type='text' id='Cep' name='Cep' placeholder='11095-110' pattern='\d*' title='Cep' />
+                </p>
+                <label title='Estado'>Estado:</label>
+                <p class='field'>
+                    <input type='text' id='Estado' name='Estado' placeholder='São Paulo' pattern='\d*' title='Estado' />
+                </p>
+                <label title='Cidade'>Cidade:</label>
+                <p class='field'>
+                    <input type='text' id='Cidade' name='Cidade' placeholder='Santos' pattern='\d*' title='Cidade' />
+                </p>
+                <label title='Bairro'>Bairro:</label>
+                <p class='field'>
+                    <input type='text' id='Bairro' name='Bairro' placeholder='Jardim São Manoel' pattern='\d*' title='Bairro' />
+                </p>
+                <label title='endereco'>Endereço:</label>
+                <p class='field'>
+                    <input type='text' id='Endereco' name='endereco' placeholder='Rua Nicolau Moran' pattern='\d*' title='endereco' />
+                </p>
+                <label title='Numero'>Numero:</label>
+                <p class='field'>
+                    <input type='text' id='Numero' name='Numero' placeholder='Rua Nicolau Moran' pattern='\d*' title='Numero' />
+                </p>
+                <button onclick="ObterUsuarioPorId()" class='button-cta' title='Confirme sua compra'><span>Confirmar</span></button>
+            </div>
+        </div>
+        <div id='paid' class='paid'>
+            <svg id='icon-paid' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 310.277 310.277" style="enable-background:new 0 0 310.277 310.277;" xml:space="preserve" width="180px" height="180px">
+            <path d="M155.139,0C69.598,0,0,69.598,0,155.139c0,85.547,69.598,155.139,155.139,155.139   c85.547,0,155.139-69.592,155.139-155.139C310.277,69.598,240.686,0,155.139,0z M144.177,196.567L90.571,142.96l8.437-8.437   l45.169,45.169l81.34-81.34l8.437,8.437L144.177,196.567z" fill="#3ac569" /></svg>
+            <h2>Your payment was completed.</h2>
+            <h2>Thank you!</h2>
+        </div>
+    </div>
+    <div class='icon-credits'>Outlined icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> & <a href="http://www.flaticon.com/authors/abhimanyu-rana" title="Abhimanyu Rana">Abhimanyu Rana</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+</body>
+</html>
+

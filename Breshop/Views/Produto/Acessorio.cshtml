@@ -1,0 +1,33 @@
+﻿@model List<Breshop.Models.Produto>
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="pt">
+<head>
+    <title>Acessorios</title>
+    <link rel="stylesheet" href="~/css/nicepage.css" />
+    <link rel="stylesheet" href="~/css/Acessorio.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <script class="u-script" type="text/javascript" src="~/js/jquery.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/Carrinho/Carrinho.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/nicepage.js"></script>
+</head>
+<body class="u-body u-xl-mode" data-lang="pt">
+    <h2 class="title-produto">Produtos em alta</h2>
+    <input type="hidden" id="idUsuario" value="@ViewData["IDUSUARIO"]" />
+    @if (Model != null && Model.Any())
+    {
+        <div class="grid-produto-acessorio">
+            @foreach (var item in Model)
+            {
+                <div class="carrinho-item">
+                    <div class="carrinho-item--img"><img src="@item.UrlImagem" /></div>
+                    <div onclick="AbrirModal(@item.IdProduto)" class="carrinho-item--add">+</div>
+                    <div class="carrinho-item--price">@item.Preco.ToString("C")</div>
+                    <div class="carrinho-item--name">@item.Marca</div>
+                    <div class="carrinho-item--desc">@item.Descricao</div>
+                </div>
+            }
+        </div>
+    }
+</body>
+</html>

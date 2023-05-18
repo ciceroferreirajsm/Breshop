@@ -3,60 +3,82 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="pt">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Tendencias, Ofertas da semana">
-    <meta name="description" content="">
-    <title>Calçados</title>
+    <title>Criar Produto</title>
     <link rel="stylesheet" href="~/css/nicepage.css" />
-    <link rel="stylesheet" href="~/css/Calçados.css" />
+    <link rel="stylesheet" href="~/css/CriarProduto.css" />
     <script class="u-script" type="text/javascript" src="~/js/jquery.js"></script>
     <script class="u-script" type="text/javascript" src="~/js/nicepage.js"></script>
-    <meta name="generator" content="Nicepage 4.17.10, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i">
-    <meta name="theme-color" content="#478ac9">
-    <meta name="twitter:site">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Calçados">
-    <meta name="twitter:description" content="">
-    <meta property="og:title" content="Calçados">
-    <meta property="og:type" content="website">
+    <script class="u-script" type="text/javascript" src="~/js/CadastrarProduto/Editar.js"></script>
 </head>
 <body class="u-body u-xl-mode" data-lang="pt">
+    <input value="@ViewBag.Message" type="hidden" id="mensagem" />
     <div class="u-clearfix u-sheet u-sheet-1">
-        <h2>Editar</h2>
-        <h4>Produto</h4>
-        <form asp-action="Editar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdProduto" />
-            <div class="form-group">
-                <label asp-for="Tamanho" class="control-label"></label>
-                <input asp-for="Tamanho" class="form-control" />
-                <span asp-validation-for="Tamanho" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Preco" class="control-label"></label>
-                <input asp-for="Preco" class="form-control" />
-                <span asp-validation-for="Preco" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Marca" class="control-label"></label>
-                <input asp-for="Marca" class="form-control" />
-                <span asp-validation-for="Marca" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Sexo" class="control-label"></label>
-                <input asp-for="Sexo" class="form-control" />
-                <span asp-validation-for="Sexo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-    <div>
-        <a asp-action="Index">Back to List</a>
+        <div class="grid-criar-produto">
+            <h2>Atualizar Produto</h2>
+            <form asp-action="Editar" method="post" enctype="multipart/form-data">
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <label asp-for="Categoria" class="control-label">Categoria: </label>
+                    <span asp-validation-for="Categoria" class="text-danger"></span>
+                    <select asp-for="Categoria">
+                        <option value="Calcado">Calçados</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Ofertas">Ofertas</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Acessorios">Acessórios</option>
+                    </select>
+                </div>
+                <input asp-for="IdProduto" type="hidden" value="@Model.IdProduto" class="form-control" id="idProduto" />
+                <span asp-validation-for="IdProduto" typeof="hidden"></span>
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <label asp-for="Descricao" class="control-label">Descrição: </label>
+                    <input asp-for="Descricao" required class="form-control" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <label asp-for="Tamanho" class="control-label">Tamanho: </label>
+                    <input asp-for="Tamanho" class="form-control" />
+                    <span asp-validation-for="Tamanho" class="text-danger"></span>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <label asp-for="Preco" class="control-label">Preço: </label>
+                    <input asp-for="Preco" type="d" required min="1" class="form-control" id="money" />
+                    <span asp-validation-for="Preco" class="text-danger"></span>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <label asp-for="Marca" class="control-label">Marca: </label>
+                    <input asp-for="Marca" required class="form-control" />
+                    <span asp-validation-for="Marca" class="text-danger"></span>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <label asp-for="ProdutoVendido" class="control-label">Produto vendido: </label>
+                    <input asp-for="ProdutoVendido" type="checkbox" class="form-control-checkbox" />
+                </div>
+                @if (Model.UrlImagem != null)
+                {
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <input asp-for="Imagem" class="btn-default" type="file" onchange="SalvarImagem()" id="atualizar-imagem" />
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <img src="@Model.UrlImagem" alt="" class="img-produto">
+                    </div>
+                }
+                else
+                {
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <input asp-for="Imagem" class="btn-default" type="file" class="form-control" />
+                        <span asp-validation-for="Imagem" class="text-danger"></span>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <input asp-for="UrlImagem" type="hidden" required class="form-control" />
+                    </div>
+                }
+                <div class="u-container-style u-list-item u-repeater-item">
+                    <input type="submit" value="Atualizar" class="btn btn-default" />
+                    <a asp-controller="CadastrarProdutos" asp-action="Index"><input class="btn-default" type="button" value="Voltar" /></a>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 

@@ -3,26 +3,46 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Breshop.Models;
-using Breshop.Intefaces;
+using Breshop.Interfaces;
+using Newtonsoft.Json;
 
 namespace Breshop.Controllers
 {
-    public class ProdutoController : Controller
+    public class ProdutoController : BaseController
     {
         private readonly IProdutoService _produtoService;
+        private readonly ICarrinhoService _carrinhoService;
+        private readonly ICarrinhoProdutoService _carrinhoProdutoService;
 
-        public ProdutoController(IProdutoService produtoService)
+
+        public ProdutoController(IProdutoService produtoService, ICarrinhoService carrinhoService, ICarrinhoProdutoService carrinhoProdutoService)
         {
             _produtoService = produtoService;
+            _carrinhoService = carrinhoService;
+            _carrinhoProdutoService = carrinhoProdutoService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Ofertas()
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                if (_usuarioAutenticado)
+                {
+                    List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Ofertas");
+                    var carrinho = _carrinhoService.ObterCarrinhoPorIdUsuario(_IdUsuario);
 
-                return View(produtos);
+                    ViewData["QTD-CARRINHO"] = 0;
+                    ViewData["RETORNO"] = _usuarioAutenticado;
+                    ViewData["ISADMIN"] = _IsAdmin;
+                    ViewData["IDUSUARIO"] = _IdUsuario;
+
+                    if (carrinho != null)
+                        ViewData["QTD-CARRINHO"] = _carrinhoProdutoService.ListarProdutosCarrinho(carrinho.IdProdutoCarrinho, carrinho.IdCarrinho).Count;
+
+                    return View(produtos);
+                }
+
+                return RedirectToAction("Index", "Login");
             }
             catch (Exception)
             {
@@ -36,9 +56,24 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("calcado");
+                if (_usuarioAutenticado)
+                {
+                    List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Calcado");
 
-                return View(produtos);
+                    var carrinho = _carrinhoService.ObterCarrinhoPorIdUsuario(_IdUsuario);
+
+                    ViewData["QTD-CARRINHO"] = 0;
+                    ViewData["RETORNO"] = _usuarioAutenticado;
+                    ViewData["ISADMIN"] = _IsAdmin;
+                    ViewData["IDUSUARIO"] = _IdUsuario;
+
+                    if (carrinho != null)
+                        ViewData["QTD-CARRINHO"] = _carrinhoProdutoService.ListarProdutosCarrinho(carrinho.IdProdutoCarrinho, carrinho.IdCarrinho).Count;
+
+                    return View(produtos);
+                }
+
+                return RedirectToAction("Index", "Login");
             }
             catch (Exception)
             {
@@ -52,41 +87,24 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                if (_usuarioAutenticado)
+                {
+                    List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Feminino");
 
-                return View(produtos);
-            }
-            catch (Exception)
-            {
-                List<Produto> produtos = new List<Produto>();
+                    var carrinho = _carrinhoService.ObterCarrinhoPorIdUsuario(_IdUsuario);
 
-                return View(produtos);
-            }
-        }
+                    ViewData["QTD-CARRINHO"] = 0;
+                    ViewData["RETORNO"] = _usuarioAutenticado;
+                    ViewData["ISADMIN"] = _IsAdmin;
+                    ViewData["IDUSUARIO"] = _IdUsuario;
 
-        public async Task<IActionResult> Infantil(int? id)
-        {
-            try
-            {
-                List<Produto> produtos = new List<Produto>();
+                    if (carrinho != null)
+                        ViewData["QTD-CARRINHO"] = _carrinhoProdutoService.ListarProdutosCarrinho(carrinho.IdProdutoCarrinho, carrinho.IdCarrinho).Count;
 
-                return View(produtos);
-            }
-            catch (Exception)
-            {
-                List<Produto> produtos = new List<Produto>();
+                    return View(produtos);
+                }
 
-                return View(produtos);
-            }
-        }
-
-        public async Task<IActionResult> Ofertas(int? id)
-        {
-            try
-            {
-                List<Produto> produtos = new List<Produto>();
-
-                return View(produtos);
+                return RedirectToAction("Index", "Login");
             }
             catch (Exception)
             {
@@ -100,9 +118,24 @@ namespace Breshop.Controllers
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                if (_usuarioAutenticado)
+                {
+                    List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Masculino");
 
-                return View(produtos);
+                    var carrinho = _carrinhoService.ObterCarrinhoPorIdUsuario(_IdUsuario);
+
+                    ViewData["QTD-CARRINHO"] = 0;
+                    ViewData["RETORNO"] = _usuarioAutenticado;
+                    ViewData["ISADMIN"] = _IsAdmin;
+                    ViewData["IDUSUARIO"] = _IdUsuario;
+
+                    if (carrinho != null)
+                        ViewData["QTD-CARRINHO"] = _carrinhoProdutoService.ListarProdutosCarrinho(carrinho.IdProdutoCarrinho, carrinho.IdCarrinho).Count;
+
+                    return View(produtos);
+                }
+
+                return RedirectToAction("Index", "Login");
             }
             catch (Exception)
             {
@@ -112,13 +145,28 @@ namespace Breshop.Controllers
             }
         }
 
-        public async Task<IActionResult> Relogio(int? id)
+        public async Task<IActionResult> Acessorio(int? id)
         {
             try
             {
-                List<Produto> produtos = new List<Produto>();
+                if (_usuarioAutenticado)
+                {
+                    List<Produto> produtos = _produtoService.ObterListaProdutosPorCategoria("Acessorios");
 
-                return View(produtos);
+                    var carrinho = _carrinhoService.ObterCarrinhoPorIdUsuario(_IdUsuario);
+
+                    ViewData["QTD-CARRINHO"] = 0;
+                    ViewData["RETORNO"] = _usuarioAutenticado;
+                    ViewData["ISADMIN"] = _IsAdmin;
+                    ViewData["IDUSUARIO"] = _IdUsuario;
+
+                    if (carrinho != null)
+                        ViewData["QTD-CARRINHO"] = _carrinhoProdutoService.ListarProdutosCarrinho(carrinho.IdProdutoCarrinho, carrinho.IdCarrinho).Count;
+
+                    return View(produtos);
+                }
+
+                return RedirectToAction("Index", "Login");
             }
             catch (Exception)
             {
@@ -128,9 +176,10 @@ namespace Breshop.Controllers
             }
         }
 
-        public IActionResult Error(int? id)
+        public async Task<JsonResult> ObterProdutoPorId(int IdProduto)
         {
-            return NotFound();
+            var retorno = _produtoService.ObterProdutoPorId(IdProduto);
+            return Json(JsonConvert.SerializeObject(new { Produto = retorno }));
         }
     }
 }

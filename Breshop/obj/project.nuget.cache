@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4gX9V6tYG7GtLL0aDXk1CWGI8bc3K1si/JZrW2KTpHyMuZ/BpJwWYlaAaOWSq5TQBtUUyLJXlbq8vMVQ4xi1EA==",
+  "dgSpecHash": "a3TtaeHcdsms2EXN7NZy0ZzlnxuENi0kUUBSAMsS0uZU1pRFkvZu0ILIJWcuL5qxYn+Em1i1NR6+IzyLP+OZ5Q==",
   "success": true,
-  "projectFilePath": "E:\\Heavy Soldier Files\\Desktop\\TCC\\Breshop\\Breshop\\Breshop.csproj",
+  "projectFilePath": "D:\\Heavy Soldier Files\\Desktop\\NovoTCC\\Breshop\\Breshop\\Breshop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
@@ -48,7 +48,7 @@
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.httpspolicy\\2.1.1\\microsoft.aspnetcore.httpspolicy.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.1.1\\microsoft.aspnetcore.identity.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\2.1.1\\microsoft.aspnetcore.identity.entityframeworkcore.2.1.1.nupkg.sha512",
-    "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\2.1.1\\microsoft.aspnetcore.identity.ui.2.1.1.nupkg.sha512",
+    "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.1\\microsoft.aspnetcore.identity.ui.7.0.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\2.1.1\\microsoft.aspnetcore.jsonpatch.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.localization\\2.1.1\\microsoft.aspnetcore.localization.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.localization.routing\\2.1.1\\microsoft.aspnetcore.localization.routing.2.1.1.nupkg.sha512",
@@ -72,7 +72,7 @@
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.nodeservices\\2.1.1\\microsoft.aspnetcore.nodeservices.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.owin\\2.1.1\\microsoft.aspnetcore.owin.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.1.1\\microsoft.aspnetcore.razor.2.1.1.nupkg.sha512",
-    "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.razor.design\\2.2.0\\microsoft.aspnetcore.razor.design.2.2.0.nupkg.sha512",
+    "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.razor.design\\2.1.1\\microsoft.aspnetcore.razor.design.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\2.1.1\\microsoft.aspnetcore.razor.language.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.1.1\\microsoft.aspnetcore.razor.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Usuário\\.nuget\\packages\\microsoft.aspnetcore.responsecaching\\2.1.1\\microsoft.aspnetcore.responsecaching.2.1.1.nupkg.sha512",
@@ -305,8 +305,8 @@
       "code": "NU1608",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Versão detectada do pacote fora da restrição de dependência: Microsoft.AspNetCore.App 2.1.1 requer Microsoft.AspNetCore.Razor.Design (>= 2.1.1 && < 2.2.0), mas a versão Microsoft.AspNetCore.Razor.Design 2.2.0 foi resolvida.",
-      "libraryId": "Microsoft.AspNetCore.Razor.Design",
+      "message": "Versão detectada do pacote fora da restrição de dependência: Microsoft.AspNetCore.App 2.1.1 requer Microsoft.AspNetCore.Identity.UI (>= 2.1.1 && < 2.2.0), mas a versão Microsoft.AspNetCore.Identity.UI 7.0.1 foi resolvida.",
+      "libraryId": "Microsoft.AspNetCore.Identity.UI",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.1"
       ]

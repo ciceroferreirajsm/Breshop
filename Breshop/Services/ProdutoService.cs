@@ -1,10 +1,7 @@
-﻿using Breshop.Intefaces;
+﻿using Breshop.Interfaces;
 using Breshop.Models;
-using Breshop.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Breshop.Services
 {
@@ -21,23 +18,23 @@ namespace Breshop.Services
         {
             try
             {
+                produto.Preco = formatarValor(produto.Preco);
+
                 bool produtoAdicionado = _produtoRepository.AdicionarProduto(produto);
 
                 return produtoAdicionado;
             }
             catch (Exception ex)
             {
-                throw ex;
+                return false;
             }
         }
 
-        public bool AtualizarProduto(Produto produto)
+        public Produto AtualizarProduto(Produto produto)
         {
             try
             {
-                bool produtoAdicionado = _produtoRepository.AtualizarProduto(produto);
-
-                return produtoAdicionado;
+                return _produtoRepository.AtualizarProduto(produto); 
             }
             catch (Exception ex)
             {
@@ -66,6 +63,48 @@ namespace Breshop.Services
                 List<Produto> produtos = _produtoRepository.ObterListaProdutosPorCategoria(Categoria);
 
                 return produtos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Produto> ListarProdutos()
+        {
+            try
+            {
+                List<Produto> produtos = _produtoRepository.ListarProdutos();
+
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Produto ObterProdutoPorId(int id)
+        {
+            try
+            {
+                Produto produtos = _produtoRepository.ObterProdutoPorId(id);
+
+                return produtos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private double formatarValor(double valor)
+        {
+            try
+            {
+                //Produto produtos = _produtoRepository.ObterProdutoPorId(id);
+
+                return 0;
             }
             catch (Exception ex)
             {

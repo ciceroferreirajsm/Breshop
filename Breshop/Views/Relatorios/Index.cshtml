@@ -1,0 +1,125 @@
+﻿@model List<Breshop.Models.Relatorio>
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="pt">
+<head>
+    <title>DashBoards Vendas</title>
+    <link rel="stylesheet" href="~/css/nicepage.css" />
+    <script class="u-script" type="text/javascript" src="~/js/jquery.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/nicepage.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/Carrinho/Carrinho.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var chart = new CanvasJS.Chart("chartContainer",
+                {
+                    title: {
+                        text: "Vendas de 2022"
+                    },
+                    legend: {
+                        maxWidth: 350,
+                        itemWidth: 120
+                    },
+                    data: [
+                        {
+                            type: "pie",
+                            showInLegend: true,
+                            legendText: "{indexLabel}",
+                            dataPoints: [
+                                { y: 0, indexLabel: "Masculino" },
+                                { y: 0, indexLabel: "Feminino" },
+                                { y: 0, indexLabel: "Calçados" },
+                                { y: 0, indexLabel: "Acessórios" }
+                            ]
+                        }
+                    ]
+                });
+
+
+            var relatorio = $('#relatorio').val();
+            var model = jQuery.parseJSON(relatorio);
+
+            if (model.length == 0) {
+                chart.options.data[0].dataPoints[0].y = 0;
+                chart.options.data[0].dataPoints[1].y = 0;
+                chart.options.data[0].dataPoints[2].y = 0;
+                chart.options.data[0].dataPoints[3].y = 0;
+            } else {
+                model.forEach(function (item) {
+                    switch (item.Modelo) {
+                        case "Masculino":
+                            chart.options.data[0].dataPoints[0].y += item.Quantidade;
+                            break;
+                        case "Feminino":
+                            chart.options.data[0].dataPoints[1].y += item.Quantidade;
+                            break;
+                        case "Calcado":
+                            chart.options.data[0].dataPoints[2].y += item.Quantidade;
+                            break;
+                        case "Acessórios":
+                            chart.options.data[0].dataPoints[3].y += item.Quantidade;
+                            break;
+                    }
+                });
+            }
+
+            chart.render();
+            //var chart1 = new CanvasJS.Chart("chartContainer1",
+            //    {
+            //        theme: "light2",
+            //        title: {
+            //            text: "Pedidos não finalizados 2022"
+            //        },
+            //        data: [
+            //            {
+            //                type: "pie",
+            //                showInLegend: true,
+            //                toolTipContent: "{y} - #percent %",
+            //                yValueFormatString: "#,##,,.## Indice",
+            //                legendText: "{indexLabel}",
+            //                dataPoints: [
+            //                    { y: 99, indexLabel: "Camisetas Femininas" },
+            //                    { y: 110, indexLabel: "Camisetas Masculinas" },
+            //                    { y: 320, indexLabel: "Calçados Masculinos" },
+            //                    { y: 44, indexLabel: "Calçados Femininos" },
+            //                    { y: 30, indexLabel: "Acessórios" }
+            //                ]
+            //            }
+            //        ]
+            //    });
+            //chart1.render();
+
+            //var chart = new CanvasJS.Chart("chartContainer2",
+            //    {
+            //        title: {
+            //            text: "Tráfegos dos novos clientes 2022"
+            //        },
+            //        data: [
+            //            {
+            //                type: "doughnut",
+            //                dataPoints: [
+            //                    { y: 53.37, indexLabel: "Instagram" },
+            //                    { y: 35.0, indexLabel: "Facebook Ads" },
+            //                    { y: 7, indexLabel: "Google Ads" },
+            //                    { y: 2, indexLabel: "Site" },
+            //                    { y: 5, indexLabel: "Outros" }
+            //                ]
+            //            }
+            //        ]
+            //    });
+        }
+    </script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+    <div clss="relatorios">
+        <h2 class="title-produto">DashBoard Vendas</h2>
+        <input type="hidden" id="relatorio" value="@ViewData["RELATORIO"]" />
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        <p style="border: 1px solid rgba(0, 0, 0, 0.125); margin-bottom: 3%;"></p>
+        <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+        <p style="border: 1px solid rgba(0, 0, 0, 0.125); margin-bottom: 3%;"></p>
+        <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+        <p style="border: 1px solid rgba(0, 0, 0, 0.125); margin-bottom: 3%;"></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+﻿@model Breshop.Models.Usuario
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="pt">
+<head>
+    <link rel="stylesheet" href="~/css/login.css">
+    <script class="u-script" type="text/javascript" src="~/js/Login/login.js" defer=""></script>
+</head>
+<body class="u-body u-xl-mode" data-lang="pt">
+    <section>
+        <div class="wrapper">
+            <form class="login">
+                <p class="title">Bem vindo!</p>
+                <input type="text" asp-for="Email"  id="email" required placeholder="Email" autofocus />
+                <i class="fa fa-user"></i>
+                <input type="password" asp-for="Senha" id="senha" required placeholder="Senha" autofocus />
+                <i class="fa fa-key"></i>
+                <a href="@Url.Action("CadastreSe","Login")">Não tem uma conta? Cadastre-se </a>
+                <br />
+                <a href="#">Esqueceu sua senha?</a>
+                <button type="submit">
+                    <i class="spinner"></i>
+                    <span class="state">Entrar</span>
+                </button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

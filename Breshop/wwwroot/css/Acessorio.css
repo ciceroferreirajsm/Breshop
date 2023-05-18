@@ -1,0 +1,8 @@
+.grid-produto-acessorio {
+    margin-left: 7%;
+    margin-right: 7%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    word-break: break-all;
+}

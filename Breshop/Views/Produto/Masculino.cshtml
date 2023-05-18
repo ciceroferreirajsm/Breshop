@@ -3,41 +3,30 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="pt">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="Tendencias, Ofertas da semana">
-    <meta name="description" content="">
     <title>Masculino</title>
     <link rel="stylesheet" href="~/css/nicepage.css" />
     <link rel="stylesheet" href="~/css/Masculino.css" />
+        <link rel="stylesheet" href="~/css/Acessorio.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
     <script class="u-script" type="text/javascript" src="~/js/jquery.js"></script>
+    <script class="u-script" type="text/javascript" src="~/js/Carrinho/Carrinho.js"></script>
     <script class="u-script" type="text/javascript" src="~/js/nicepage.js"></script>
-    <meta name="generator" content="Nicepage 4.17.10, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i">
-    <meta name="theme-color" content="#478ac9">
-    <meta name="twitter:site">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Masculino">
-    <meta name="twitter:description" content="">
-    <meta property="og:title" content="Masculino">
-    <meta property="og:type" content="website">
 </head>
 <body class="u-body u-xl-mode" data-lang="pt">
     <h2 class="title-produto">Produtos em alta</h2>
+    <input type="hidden" id="idUsuario" value="@ViewData["IDUSUARIO"]"/>
     @if (Model != null && Model.Any())
     {
-        <div class="grid-produto">
+        <div class="grid-produto-acessorio">
             @foreach (var item in Model)
             {
-                <section class="u-expanded-width u-list u-list-1">
-                    <div class="u-container-layout u-similar-container u-container-layout-1">
-                        <img src="@item.UrlImagem" alt="" class="img-produto">
-                        <h5 class="descricao">@item.Descricao</h5>
-                        <h3 class="">R$ @item.Preco</h3>
-                        <span class="u-icon u-text-palette-2-base u-icon-1"><svg class="u-svg-content" viewBox="0 0 511.334 511.334" style="width: 1em; height: 1em;"><path d="m506.887 114.74c-3.979-5.097-10.086-8.076-16.553-8.076h-399.808l-5.943-66.207c-.972-10.827-10.046-19.123-20.916-19.123h-42.667c-11.598 0-21 9.402-21 21s9.402 21 21 21h23.468l23.018 256.439c.005.302-.01.599.007.903.047.806.152 1.594.286 2.37l.842 9.376c.016.177.034.354.055.529 2.552 22.11 13.851 41.267 30.19 54.21-8.466 10.812-13.532 24.407-13.532 39.172 0 35.106 28.561 63.667 63.666 63.667 35.106 0 63.667-28.561 63.667-63.667 0-7.605-1.345-14.9-3.801-21.667h114.936c-2.457 6.767-3.801 14.062-3.801 21.667 0 35.106 28.561 63.667 63.667 63.667s63.667-28.561 63.667-63.667-28.561-63.667-63.667-63.667h-234.526c-15.952 0-29.853-9.624-35.853-23.646l335.608-19.724c9.162-.538 16.914-6.966 19.141-15.87l42.67-170.67c1.567-6.272.158-12.918-3.821-18.016z"></path></svg><img></span>&nbsp;
-                    </div>
-                </section>
+                <div class="carrinho-item">
+                    <div class="carrinho-item--img"><img src="@item.UrlImagem" /></div>
+                    <div onclick="AbrirModal(@item.IdProduto)" class="carrinho-item--add">+</div>
+                    <div class="carrinho-item--price">@item.Preco.ToString("C")</div>
+                    <div class="carrinho-item--name">@item.Marca</div>
+                    <div class="carrinho-item--desc">@item.Descricao</div>
+                </div>
             }
         </div>
     }
